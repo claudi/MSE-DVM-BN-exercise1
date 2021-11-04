@@ -2,8 +2,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
 \usepackage{lmodern}
 \usepackage{microtype}
+\usepackage{tikz}
 
 \title{Bayesian Networks --- Exercise 1}
 \author{Claudi Lleyda Moltó}
@@ -23,6 +25,55 @@ the time she is not in her office, she is still logged onto the computer.
     \item[(a)] Construct a Bayesian network to represent the scenario just
         described.
 \end{enumerate}
+
+We start by defining appropriate random variables:
+\begin{align*}
+    O &= \textrm{``Dr.\ Ann Nicholson is in her office''} \\
+    L &= \textrm{``The light in Dr.\ Ann Nicholson's office is on''} \\
+    C &= \textrm{``Dr.\ Ann Nicholson is logged onto her computer''}
+\end{align*}
+where~\(O\) can be~\texttt{T} or~\texttt{F}, while~\(L\) and~\(C\) can
+be~\texttt{on} or~\texttt{off}.
+
+The variables~\(L\) and~\(C\) depend on whether Dr.\ Ann Nicholson is in her
+office, while the variables~\(L\) and~\(C\) are conditionally independent. This
+induces the following DAG
+
+\begin{center}
+    \begin{tikzpicture}[edge from parent/.style={draw,-latex}]
+        \node[circle,draw](z){$O$}
+            child{node[circle,draw]{L}}
+            child{node[circle,draw]{C}};
+    \end{tikzpicture}
+\end{center}
+
+we know the marginal distribution of~\(O\):
+\begin{center}
+    \begin{tabular}{cc}
+        \texttt{T} & \texttt{F} \\ \hline
+        \(0.6\) & \(0.4\)
+    \end{tabular}
+\end{center}
+
+and the conditional distributions of~\(L\) and~\(C\) with respect to~\(O\):
+\[
+    \begin{array}{c|cc}
+        L              & \texttt{on} & \texttt{off} \\ \hline
+        O = \texttt{T} & 0.50        & 0.50 \\
+        O = \texttt{F} & 0.05        & 0.95
+    \end{array}
+    \qquad
+    \begin{array}{c|cc}
+        C              & \texttt{on} & \texttt{off} \\ \hline
+        O = \texttt{T} & 0.80        & 0.20 \\
+        O = \texttt{F} & 0.10        & 0.90
+    \end{array}
+\]
+
+We know that this DAG is a Bayesian Network because~\(L\) and~\(C\) are
+conditionally independent, and we also know that the conditional distributions
+and the marginal distribution of the root nodes give the joint probability
+through the chain rule.
 
 \begin{enumerate}
     \item[(b)] Suppose a student checks Dr.\ Nicholson's login status and sees
