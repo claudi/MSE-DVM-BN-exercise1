@@ -37,8 +37,7 @@ We start by defining appropriate random variables:
     L &= \textrm{``The light in Dr.\ Ann Nicholson's office is on''} \\
     C &= \textrm{``Dr.\ Ann Nicholson is logged onto her computer''}
 \end{align*}
-where~\(O\) can be~\texttt{T} or~\texttt{F}, while~\(L\) and~\(C\) can
-be~\texttt{on} or~\texttt{off}.
+where~\(O\) can be~\T or~\F, while~\(L\) and~\(C\) can be~\on or~\off.
 
 The variables~\(L\) and~\(C\) depend on whether Dr.\ Ann Nicholson is in her
 office, while the variables~\(L\) and~\(C\) are conditionally independent. This
@@ -53,25 +52,25 @@ induces the following DAG
 \end{center}
 
 we know the marginal distribution of~\(O\):
-\begin{center}
-    \begin{tabular}{cc}
-        \texttt{T} & \texttt{F} \\ \hline
-        \(0.6\) & \(0.4\)
-    \end{tabular}
-\end{center}
+\[
+    \begin{array}{cc}
+        \T   & \F   \\ \hline
+        0.60 & 0.40
+    \end{array}
+\]
 
 and the conditional distributions of~\(L\) and~\(C\) with respect to~\(O\):
 \[
     \begin{array}{c|cc}
-        L              & \texttt{on} & \texttt{off} \\ \hline
-        O = \texttt{T} & 0.50        & 0.50 \\
-        O = \texttt{F} & 0.05        & 0.95
+        L      & \on  & \off \\ \hline
+        O = \T & 0.50 & 0.50 \\
+        O = \F & 0.05 & 0.95
     \end{array}
     \qquad
     \begin{array}{c|cc}
-        C              & \texttt{on} & \texttt{off} \\ \hline
-        O = \texttt{T} & 0.80        & 0.20 \\
-        O = \texttt{F} & 0.10        & 0.90
+        C      & \on   & \off \\ \hline
+        O = \T & 0.80  & 0.20 \\
+        O = \F & 0.10  & 0.90
     \end{array}
 \]
 
