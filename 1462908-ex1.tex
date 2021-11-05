@@ -112,4 +112,13 @@ and we get
         against her light is on?
 \end{enumerate}
 
+We want to know whether~\(P(L = \on \mid C = \on) > P(L = \on)\). If we
+calculate
+\begin{align*}
+    P(L = \on) &= P(L = \on \mid O = \T)P(O = \T) + P(L = \on \mid O = \F)P(O = \F) \\
+               &= 0.50 * 0.60 + 0.05 * 0.40 = 0.32,
+\end{align*}
+which shows that~\(P(L = \on \mid C = \on) > P(L = \on) = 0.32\), and we
+conclude that the evidence~\(C = \on\) is in favour of~\(L = \on\).
+
 \end{document}
