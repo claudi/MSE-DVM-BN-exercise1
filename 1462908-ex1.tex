@@ -7,6 +7,11 @@
 \usepackage{microtype}
 \usepackage{tikz}
 
+\newcommand{\T}{\texttt{T}}
+\newcommand{\F}{\texttt{F}}
+\newcommand{\on}{\texttt{on}}
+\newcommand{\off}{\texttt{off}}
+
 \title{Bayesian Networks --- Exercise 1}
 \author{Claudi Lleyda Moltó}
 
@@ -80,6 +85,28 @@ through the chain rule.
         that she is logged on. What effect does this have on the student's
         belief that Dr.\ Nicholson's light is on?
 \end{enumerate}
+
+We want to calculate
+\[
+    P(L = \on \mid C = \on) = \frac{P(L = \on, C = \on)}{P(C = \on)}
+\]
+where
+\begin{align*}
+    P(L = \on, C = \on) &= P(L = \on, C = \on \mid O = \T)P(O = \T) \\
+                        &\phantom{=}+ P(L = \on, C = \on \mid O = \F)P(O = \F) \\
+                        &= P(L = \on \mid O = \T)P(C = \on \mid O = \T)P(O = \T) \\
+                        &\phantom{=}+ P(L = \on \mid O = \F)P(C = \on \mid O = \F)P(O = \F) \\
+                        &= 0.50 * 0.80 * 0.60 + 0.05 * 0.10 * 0.40 = 0.242
+\end{align*}
+and
+\begin{align*}
+    P(C = \on) &= P(C = \on \mid O = \T)P(O = \T) + P(C = \on \mid O = \F)P(O = \F) \\
+               &= 0.80 * 0.60 + 0.10 * 0.40 = 0.52
+\end{align*}
+and we get
+\[
+    P(L = \on \mid C = \on) = \frac{P(L = \on, C = \on)}{P(C = \on)} = 0.242 * 0.52 \approx 0.4653846
+\]
 
 \begin{enumerate}
     \item[(c)] Is the evidence that Dr.\ Nicholson's is logged on in favor of or
